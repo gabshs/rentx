@@ -1,5 +1,5 @@
 import { deleteFile } from '@config/file';
-import { UsersRepository } from '@modules/accounts/repositories/implementations/UsersRepository';
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
 import { inject, injectable } from 'tsyringe';
 
 interface IRequest {
@@ -11,7 +11,7 @@ interface IRequest {
 class UpdateUserAvatarUseCase {
   constructor(
     @inject('UsersRepository')
-    private usersRepository: UsersRepository,
+    private usersRepository: IUsersRepository,
   ) {}
 
   async execute({ userId, avatarFile }: IRequest): Promise<void> {
